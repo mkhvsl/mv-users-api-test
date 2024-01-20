@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <?php if($users) { ?>
-<table class="uk-table uk-table-divider" id="lk-inpsyde-test">
+<table class="uk-table uk-table-divider" id="mv-users-api-test">
 	<thead>
 		<tr>
 			<th>ID</th>

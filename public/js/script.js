@@ -1,5 +1,5 @@
 jQuery(function($) {
-	$('#lk-inpsyde-test a').on('click', function(e) {
+	$('#mv-users-api-test a').on('click', function(e) {
 		e.preventDefault()
 
 		var this2 = this
