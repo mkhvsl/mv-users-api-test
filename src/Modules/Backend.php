@@ -77,12 +77,14 @@ class Backend implements ExecutableModule
     public function settingUrl()
     {
         $options = get_option($this->prefix . '_settings');
-        echo "<input id='" . esc_attr($this->prefix . '_setting_url') . "' name='" . esc_attr($this->prefix . '_settings[url]') . "' type='text' value='" . esc_attr($options['url']) . "' />";
+
+        include plugin_dir_path($this->properties->pluginMainFile()) . 'resources/views/setting-url.php';
     }
 
     public function settingsLink(array $links): array
     {
-        $links[] = '<a href="' . get_admin_url() . 'options-general.php?page=' . $this->properties->baseName() . '">' . __('Settings', 'textdomain') . '</a>';
+        $url = get_admin_url() . 'options-general.php?page=' . $this->properties->baseName();
+        $links[] = '<a href="' . $url . '">' . __('Settings', 'textdomain') . '</a>';
 
         return $links;
     }

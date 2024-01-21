@@ -3,6 +3,5 @@
     <arg value="s"/>
     <file>./src</file>
     <rule ref="Inpsyde">
-		<exclude name="Inpsyde.CodeQuality.LineLength.TooLong"/>
 	</rule>
 </ruleset>
