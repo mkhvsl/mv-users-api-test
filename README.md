@@ -15,6 +15,8 @@ $ cd mv-users-api-test
 $ composer install
 ```
 
+And activate plugin in WordPress.
+
 ## Minimum Requirements and Dependencies
 
 * inpsyde/modularity
