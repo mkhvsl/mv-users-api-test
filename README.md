@@ -19,6 +19,7 @@ And activate plugin in WordPress.
 
 ## Minimum Requirements and Dependencies
 
+* PHP 7.2+
 * inpsyde/modularity
 
 When installed for development via Composer, the package also requires:
