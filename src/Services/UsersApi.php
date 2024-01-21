@@ -23,6 +23,7 @@ class UsersApi
     public function users(): array
     {
         $response = get_transient($this->prefix . '_users');
+
         if ($response === false) {
             $response = wp_remote_get($this::URL);
 
@@ -42,6 +43,7 @@ class UsersApi
     public function user(int $id): array
     {
         $response = get_transient($this->prefix . '_user' . $id);
+
         if ($response === false) {
             $response = wp_remote_get($this::URL . $id);
 
