@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * Plugin Name:       MV Users API Test
  * Plugin URI:        https://github.com/mkhvsl/mv-users-api-test
@@ -13,6 +11,8 @@ declare(strict_types=1);
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       mv-users-api-test
  */
+
+declare(strict_types=1);
 
 namespace Mkhvsl\MvUsersApiTest;
 
@@ -30,6 +30,7 @@ function plugin(): Modularity\Package
         $package = Modularity\Package::new($properties)
             ->addModule(new Modules\Frontend())
             ->addModule(new Modules\Backend())
+            ->addModule(new Modules\Data())
             ;
     }
 

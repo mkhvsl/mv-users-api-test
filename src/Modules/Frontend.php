@@ -15,11 +15,13 @@ class Frontend implements ExecutableModule
 
     private $properties;
     private $prefix;
+    private $usersApi;
 
     public function run(ContainerInterface $container): bool
     {
         $this->properties = $container->get(Package::PROPERTIES);
         $this->prefix = str_replace('-', '_', $this->properties->baseName());
+        $this->usersApi = $container->get(UsersApiService::class);
 
         add_action('template_redirect', [$this, 'renderPage']);
         add_action('wp_ajax_nopriv_' . $this->prefix . '_api_user', [$this, 'apiUser']);
@@ -35,22 +37,12 @@ class Frontend implements ExecutableModule
         check_ajax_referer('title_example');
 
         if (!isset($_POST['id'])) {
-            wp_send_json('Error, please contact site administrator');
+            wp_send_json([]);
         }
 
-        $id = wp_unslash(intval($_POST['id']));
+        $id = intval($_POST['id']);
 
-        $response = get_transient($this->prefix . '_user' . $id);
-        if ($response === false) {
-            $response = wp_remote_get('https://jsonplaceholder.typicode.com/users/' . $id);
-            if (is_wp_error($response)) {
-                wp_send_json('Error, please contact site administrator');
-            }
-            set_transient($this->prefix . '_user' . $id, $response, 60 * 60);
-        }
-
-        $body = wp_remote_retrieve_body($response);
-        $user = json_decode($body);
+        $user = $this->usersApi->user($id);
 
         wp_send_json($user);
     }
@@ -94,14 +86,7 @@ class Frontend implements ExecutableModule
                 ]
             );
 
-            $response = get_transient($this->prefix . '_users');
-            if ($response === false) {
-                $response = wp_remote_get('https://jsonplaceholder.typicode.com/users/');
-                set_transient($this->prefix . '_users', $response, 60 * 60);
-            }
-
-            $body = wp_remote_retrieve_body($response);
-            $users = json_decode($body);
+            $users = $this->usersApi->users();
 
             include plugin_dir_path($this->properties->pluginMainFile()) . 'resources/views/page.php';
             die;

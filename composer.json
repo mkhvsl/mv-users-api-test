@@ -1,6 +1,6 @@
 {
     "name": "mkhvsl/mv-users-api-test",
-    "description": "Wordpress Users API Test Plugin",
+    "description": "WordPress Users API Test Plugin",
     "require": {
         "inpsyde/modularity": "^1.7"
     },

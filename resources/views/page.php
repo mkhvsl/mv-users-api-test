@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<?php if($users) { ?>
+<?php if (isset($users['data'])) { ?>
 <table class="uk-table uk-table-divider" id="mv-users-api-test">
     <thead>
         <tr>
@@ -9,7 +9,7 @@
             <th>Username</th>
         </tr>
     </thead>
-    <?php foreach($users as $user) { ?>
+    <?php foreach($users['data'] as $user) { ?>
     <tr>
         <td><a href="#" data-id="<?php echo $user->id ?>"><?php echo $user->id ?></a></td>
         <td><a href="#" data-id="<?php echo $user->id ?>"><?php echo $user->name ?></a></td>

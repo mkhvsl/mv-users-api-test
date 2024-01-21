@@ -2,6 +2,7 @@
 <ruleset name="MV Users API Test">
     <arg value="s"/>
     <file>./src</file>
-    <file>./mv-users-api-test.php</file>
-    <rule ref="Inpsyde"/>
+    <rule ref="Inpsyde">
+		<exclude name="Inpsyde.CodeQuality.LineLength.TooLong"/>
+	</rule>
 </ruleset>

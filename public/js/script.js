@@ -7,14 +7,12 @@ jQuery(function($) {
 			_ajax_nonce: my_ajax_obj.nonce,
 			action: 'mv_users_api_test_api_user',
 			id: $(this).data('id')
-			}, function(data) {
+			}, function(response) {
 				let output
 
-				if(data) {
-					output = '<p>User details:</p><pre>' + JSON.stringify(data, null, 4) + '</pre>'
-				} else {
-					output = '<p>Error, please contact site administrator</p>'
-				}
+				if(response.data) output = '<p>User details:</p><pre>' + JSON.stringify(response.data, null, 4) + '</pre>'
+				if(response.errors) output = '<p>User not found:</p><pre>' + JSON.stringify(response.errors, null, 4) + '</pre>'
+
 				$('#lk-modal .uk-modal-body').html(output)
 				UIkit.modal($('#lk-modal')).show()
 			}
