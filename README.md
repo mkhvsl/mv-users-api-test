@@ -4,7 +4,7 @@
 
 WordPress Users API Test Plugin is showing users table from API and is made using [inpsyde/modularity](https://github.com/inpsyde/modularity).
 
-inpsyde/modularityis a modular [PSR-11](https://github.com/php-fig/container) implementation for WordPress Plugins,
+inpsyde/modularity is a modular [PSR-11](https://github.com/php-fig/container) implementation for WordPress Plugins,
 Themes or Libraries.
 
 ## Installation
