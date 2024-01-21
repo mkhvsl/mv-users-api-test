@@ -15,6 +15,11 @@ class UsersApi
         $this->prefix = $prefix;
     }
 
+    public function prefix(): string
+    {
+        return $this->prefix;
+    }
+
     public function users(): array
     {
         $response = get_transient($this->prefix . '_users');

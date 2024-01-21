@@ -34,7 +34,7 @@ class Frontend implements ExecutableModule
 
     public function apiUser()
     {
-        check_ajax_referer('title_example');
+        check_ajax_referer($this->properties->baseName());
 
         if (!isset($_POST['id'])) {
             wp_send_json([]);
@@ -82,7 +82,7 @@ class Frontend implements ExecutableModule
                 'my_ajax_obj',
                 [
                     'ajax_url' => admin_url('admin-ajax.php'),
-                    'nonce' => wp_create_nonce('title_example'),
+                    'nonce' => wp_create_nonce($this->properties->baseName()),
                 ]
             );
 
